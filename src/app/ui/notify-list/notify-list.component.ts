@@ -13,7 +13,9 @@ export class NotifyListComponent implements OnInit {
   constructor(private  notifyService: NotifyService) { }
 
   ngOnInit() {
+    // Получаю от сервиса данные
     this.notifyList$ = this.notifyService.items.pipe( map (data => data.filter(item => item.isNew)));
+    // Раз в 5 сек провожу очистку
     setInterval( () => {
        this.notifyService.removeExpired();
     }, 5000);

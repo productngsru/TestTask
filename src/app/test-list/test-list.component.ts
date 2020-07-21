@@ -92,13 +92,14 @@ export class TestListComponent implements OnInit, OnDestroy {
   }
 
   onDelete() {
-      if (this.selectedIndex >= 0) {
+      if (this.selectedIndex >= 0) { // Если что-то выбрано спрашиваю и удаляю
         this.dialogService.confirmDialog('Delete '
           + this.listItems[this.selectedIndex].last_name + ' '
           + this.listItems[this.selectedIndex].first_name  + '?', '350px',
           () => {
-
+            // Выполняю запрос на удаление
             this.testListService.deleteItem(this.listItems[this.selectedIndex].id);
+            // Сервис бутафорский, поэтому не читаю ответ, удалю сам
             this.listItems = this.listItems.filter( item => item.id !== this.listItems[this.selectedIndex].id );
             this.selectedIndex = -1;
           });
