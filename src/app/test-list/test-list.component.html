@@ -1,0 +1,50 @@
+
+<div class="cmd-panel" style="text-align: left">
+  <button mat-stroked-button class="cmd-btn" (click)="onAdd()">Add</button>
+  <button mat-stroked-button class="cmd-btn" (click)="onEdit()">Edit</button>
+  <button mat-stroked-button class="cmd-btn" (click)="onDelete()">Delete</button>
+
+  <ng-container *ngIf="selectedIndex >= 0">
+    &nbsp; Selected Record: <em>{{listItems[selectedIndex].last_name + ' ' + listItems[selectedIndex].first_name }}</em>
+  </ng-container>
+</div>
+<table datatable [dtOptions]="dtOptions" class="row-border hover" >
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Email</th>
+    <th>FirstName</th>
+    <th>LastName</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="listItems?.length != 0">
+  <tr  (click)="selectItem(idx)" *ngFor="let listItem of listItems;let idx = index">
+    <td>{{ listItem.id }}</td>
+    <td>{{ listItem.email }}</td>
+    <td>{{ listItem.first_name }}</td>
+    <td>{{ listItem.last_name }}</td>
+
+  </tr>
+  </tbody>
+  <tbody *ngIf="listItems?.length == 0">
+  <tr>
+    <td colspan="3" class="no-data-available">No data!</td>
+  </tr>
+  <tbody>
+</table>
+
+
+<ng-container *ngIf="editRecord">
+  <app-custom-dialog
+    (dialogCancel)="onCancel()"
+    [useButtons]="false"
+  >
+  <app-item-editor
+    (dialogOk)="onSave()"
+    (dialogCancel)="onCancel()"
+    [editRecord]="editRecord"
+  >
+
+  </app-item-editor>
+  </app-custom-dialog>
+</ng-container>

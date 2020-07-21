@@ -1,0 +1,8 @@
+.user-name {
+  font-size: smaller;
+  margin-right: 10px;
+}
+.main-toolbar {
+  height: 90px;
+  min-width: 240px;
+}

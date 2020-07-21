@@ -1,0 +1,30 @@
+<div class="card-mini">
+  <mat-toolbar class="main-toolbar" color="primary">
+    <div class="spacer"></div>
+    <div *ngIf="isLoggedIn()">
+      <a (click)="navigatePage('/main')" class="toolbar-link"><span class="user-name">{{userName()}}</span></a>
+      <button (click)="doLogout()" class="gradient-btn" mat-fab matTooltip="Выйти" type="button">
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+    </div>
+    <ng-container *ngIf="!isLoggedIn()">
+      <div>
+        <button (click)="navigatePage('/login')" class="gradient-btn" mat-fab matTooltip="Войти">
+          <mat-icon>input</mat-icon>
+        </button>
+      </div>&nbsp;
+      <div>
+        <button (click)="navigatePage('/register')" class="gradient-btn" mat-fab matTooltip="Регистрация">
+          <mat-icon>person_add</mat-icon>
+        </button>
+      </div>
+    </ng-container>
+  </mat-toolbar>
+</div>
+
+
+  <div style="margin-top: 1rem">
+    <router-outlet></router-outlet>
+  </div>
+
+<app-notify-list></app-notify-list>

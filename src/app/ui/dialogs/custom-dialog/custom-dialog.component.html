@@ -1,0 +1,22 @@
+<div class="modal-background" (click)="dialogCancel.emit()"> </div>
+<div class="modal-dlg" [style.width]="width" [style.top]="top">
+    <a  class="close" (click)="dialogCancel.emit()"> </a>
+    <ng-content></ng-content>
+    <div *ngIf="useButtons" class="cmd-panel">
+        <button
+                mat-stroked-button
+                [type]="okButtonType"
+                (click)="dialogOk.emit()"
+                [disabled]="okButtonDisabled"
+        >
+            {{okButtonText}}
+        </button>
+        <button
+                mat-stroked-button
+                [type]="cancelButtonType"
+                (click)="dialogCancel.emit()"
+        >
+            {{cancelButtonText}}
+        </button>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="login_dlg primary_back">
+  <em class="dlg_control">Авторизация</em>
+  <br>
+  <br>
+  <input type="text" class="dlg_control" placeholder="Логин" [(ngModel)]="state.login">
+  <br>
+  <br>
+  <input type="text" class="dlg_control" placeholder="Пароль" [(ngModel)]="state.password">
+  <br>
+  <br>
+  <button mat-raised-button color="warn" (click)="onLogin()">Войти</button>
+</div>

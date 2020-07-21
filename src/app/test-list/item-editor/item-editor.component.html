@@ -1,0 +1,36 @@
+<form (ngSubmit)="dialogOk.emit()" #taskEditForm="ngForm">
+
+  <label class="field-label">Email</label>
+  <input type="text" class="dlg-field" name="itemEmail" required [(ngModel)]="editRecord.email"
+         #itemEmail="ngModel">
+  <div *ngIf="itemEmail.invalid && (itemEmail.dirty || itemEmail.touched)" class="error-text">
+    <small *ngIf="itemEmail.errors.required">Email is not defined</small>
+  </div>
+
+    <label class="field-label">First Name</label>
+    <input type="text" class="dlg-field" name="itemFirstName" required [(ngModel)]="editRecord.first_name"
+           #itemFirstName="ngModel">
+    <div *ngIf="itemFirstName.invalid && (itemFirstName.dirty || itemFirstName.touched)" class="error-text">
+      <small *ngIf="itemFirstName.errors.required">First Name is not defined</small>
+    </div>
+
+  <label class="field-label">Last Name</label>
+  <input type="text" class="dlg-field" name="itemLastName" required [(ngModel)]="editRecord.last_name"
+         #itemLastName="ngModel">
+  <div *ngIf="itemLastName.invalid && (itemLastName.dirty || itemLastName.touched)" class="error-text">
+    <small *ngIf="itemLastName.errors.required">Last Name is not defined</small>
+  </div>
+
+  <div class="cmd-panel">
+    <button mat-stroked-button  type="submit"
+            [disabled]="taskEditForm.invalid">
+      OK
+    </button>
+    <button mat-stroked-button  type="button" (click)="dialogCancel.emit()">
+      Cancel
+    </button>
+  </div>
+</form>
+
+
+

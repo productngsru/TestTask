@@ -1,0 +1,6 @@
+<div class="notify-box">
+    <div *ngFor="let notify of notifyList$ |  async | orderBy: 'id': true"  [className]="notify.type +'-notify'">
+            <button mat-button class="close-btn" (click)="onClose(notify.id)"><mat-icon>close</mat-icon></button>
+            <label>{{notify.text}}</label>
+        </div>
+</div>
